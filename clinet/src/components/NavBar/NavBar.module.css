@@ -1,0 +1,14 @@
+.NavBar{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    position: fixed;
+    padding-left: 50px;
+    padding-top: 300px;
+    gap: 10px;
+}
+.Link{
+    color: white;
+    text-decoration: none;
+    font-size: large;
+}

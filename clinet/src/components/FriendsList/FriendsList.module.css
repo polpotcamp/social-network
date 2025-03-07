@@ -1,0 +1,18 @@
+.Container{
+    margin:  0 auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+}
+.FriendsList{
+    width: 800px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+}
+.FollowersList{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    width: 200px;
+}

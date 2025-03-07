@@ -1,0 +1,33 @@
+.Container {
+    width: 100%;
+    background-color: #171717;
+    display: flex;
+}
+.Img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+.Messager {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.MessagerTop {
+    display: flex;
+    align-items: center;
+}
+.FullName {
+    margin: 0;
+    margin-right: 10px;
+}
+.CreatedAt {
+    font-size: small;
+}
+.MessagerBot {
+    font-size: small;
+}
+.Text {
+    margin: 0;
+}

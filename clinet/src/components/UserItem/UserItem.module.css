@@ -1,0 +1,14 @@
+.Image{
+    width: 128px;
+    height: 128px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+.Container{
+    background-color: #171717;
+    z-index: 0;
+}
+.Button{
+    position: relative;
+    z-index: 10;
+}

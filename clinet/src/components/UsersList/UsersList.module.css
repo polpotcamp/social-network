@@ -1,0 +1,11 @@
+.Container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.List{
+    display: grid;
+    width: 1000px;
+    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+}

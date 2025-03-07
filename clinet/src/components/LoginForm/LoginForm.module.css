@@ -1,0 +1,17 @@
+.Container{
+    margin: 0 auto ;
+    display: flex;
+    flex-direction: column;
+}
+.text{
+    font-size: 24px;
+}
+.form{
+    display:  flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.input{
+    width: 300px;
+}

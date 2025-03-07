@@ -1,0 +1,37 @@
+.Column {
+    margin: 0 auto;
+    border-top: solid 1px #eee;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.NameColumn {
+    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
+    width: 100%;
+    font-size: 48px;
+    margin: 0;
+    font-weight: 400;
+}
+.Sorts {
+    margin: 0 auto;
+    position: relative;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+.SortItem {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    list-style: none;
+    margin: 10px 0;
+}
+.SortItem:hover {
+    opacity: 0.6;
+}
+.active{
+    text-decoration: underline; 
+}

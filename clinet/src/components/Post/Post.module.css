@@ -1,0 +1,92 @@
+.Container{
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    margin-left: auto;
+    margin-right:auto ;
+    background-color: #171717;
+    margin-top: 20px;
+}
+.Image{
+    margin-top: 20px;
+    margin-left: 15px;
+    width: 720px;
+    height: 480px;
+}
+.Author{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.AuthorAvatar{
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.UserAvatar{
+    width: 40px;
+    height: 40px;
+}
+.Info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.Title{
+    font-size: 52px;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.Text{
+    width: 95%;
+    margin: auto;
+    word-wrap: break-word;
+    text-align: start;
+}
+.Views{
+    margin-top: 10px;
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.ViewsIcon{
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}
+.CreateComment{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.TextComment{
+    padding: 0;
+    font-size: 20px;
+    width: 80%;
+    height: 40px;
+    display: block;
+    text-align: left;
+    box-sizing: border-box;
+    resize: none;
+    line-height: 1;
+    word-wrap: break-word;
+}
+
+.ButtonComment{
+    width: 20%;
+    height: 40px;
+}
+.List{
+    margin-top: 10px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #080808;
+}

@@ -1,0 +1,92 @@
+.image {
+    width: 340px;
+    height: 300px;
+    object-fit: fill;
+    margin-right: 30px;
+}
+.Container{
+    border-bottom: solid 1px #eee;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 15px;
+}
+.PostItem {
+    max-height: 540px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1000px;
+    position: relative;
+}
+.Column{
+    display: flex;
+    flex-direction: column;
+}
+.TwoColumns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    color: black;
+}
+.Title {
+    font-size: 36px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: black;
+    overflow: hidden;
+    text-decoration: none;
+}
+.Title:hover {
+    opacity: 0.5;
+}
+.Author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.AuthorName:hover {
+    text-decoration: underline; 
+}
+.AuthorAvatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.Bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.IconWithText {
+    text-decoration: none;
+    max-width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(0%) sepia(18%) saturate(8%) hue-rotate(62deg) brightness(64%) contrast(73%)
+}
+.Link:hover {
+    opacity: 0.6;
+}
+.Text {
+    margin: 0;
+    overflow: hidden;
+    max-height: 194px;
+    opacity: 0.5;
+}
+.Number {
+    margin-left: 4px;
+    color: #222222;
+}
