@@ -12,16 +12,25 @@ export const postAPI = createApi({
       }),
       providesTags: (result) => ["Post"],
     }),
-    CreatePost: build.mutation<TPost,FormData>({
+    createPost: build.mutation<TPost, FormData>({
       query: (post) => ({
         url: `/posts`,
         method: "POST",
         body: post,
-        headers:{
-            Authorization: JSON.parse(localStorage.getItem("Token") as string),
-        }
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("Token") as string),
+        },
       }),
       invalidatesTags: ["Post"],
+    }),
+    fetchPost: build.query<TPost, string>({
+      query: (postId) => ({
+        url: `/posts/${postId}`,
+        params: {
+          postId: postId,
+        },
+      }),
+      providesTags: (result) => ["Post"],
     }),
   }),
 });

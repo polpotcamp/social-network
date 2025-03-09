@@ -4,7 +4,6 @@
     width: 750px;
     margin-left: auto;
     margin-right:auto ;
-    background-color: #171717;
     margin-top: 20px;
 }
 .Image{
@@ -25,7 +24,14 @@
     margin-right: 10px;
     border-radius: 50%;
 }
+.UserAvatarContainer{
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
 .UserAvatar{
+    border-radius: 50%;
     width: 40px;
     height: 40px;
 }
@@ -65,28 +71,39 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    min-height: 50px;
 }
 .TextComment{
     padding: 0;
     font-size: 20px;
     width: 80%;
-    height: 40px;
-    display: block;
+    min-height: 40px;
     text-align: left;
     box-sizing: border-box;
     resize: none;
+    overflow: hidden;
     line-height: 1;
     word-wrap: break-word;
 }
-
+.ButtonCommentContainer{
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
 .ButtonComment{
-    width: 20%;
+    background-color: white;
+    border: none;
     height: 40px;
+}
+.CommentImg{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
 }
 .List{
     margin-top: 10px;
     gap: 20px;
     display: flex;
     flex-direction: column-reverse;
-    background-color: #080808;
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import styles from "./Post.module.css";
 import { Link, useParams } from "react-router-dom";
@@ -8,14 +8,29 @@ import { CreateComment } from "../../services/async/CreateComment";
 import Moment from "react-moment";
 import Comment from "../Comment/Comment";
 import view from "../../Images/view.svg";
+import rightArrow from "../../Images/right-arrow.svg";
 import { useAppSelector } from "../../hooks/redux";
+import { postAPI } from "../../services/PostService";
 export const Post = () => {
   const dispatch = useAppDispatch();
   const [post, setPost] = useState<TPost | null>(null);
   const [postCreator, setPostCreator] = useState<TUser>();
   const [comment, setComment] = useState("");
   const params = useParams();
+  const postId = params.id as string;
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInput = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height =
+        textareaRef.current.scrollHeight + "px";
+    }
+  };
   const avatar = useAppSelector((state) => state.userReducer.userAvatar);
+  const { data: fetchedPost } = postAPI.useFetchPostQuery(postId, {
+    skip: !params.id,
+  });
   const handleSubmit = async () => {
     try {
       const postId = params.id;
@@ -32,12 +47,6 @@ export const Post = () => {
       console.log(error);
     }
   };
-  const fetchPost = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/posts/${params.id}`
-    );
-    setPost(data);
-  };
   const fetchUser = useCallback(async () => {
     if (post !== null) {
       const { data } = await axios.get(
@@ -52,8 +61,8 @@ export const Post = () => {
     }
   }, [post]);
   useEffect(() => {
-    fetchPost();
-  }, []);
+    if (fetchedPost) setPost(fetchedPost);
+  }, [fetchedPost]);
   if (!post) {
     return <div className={`${styles.loading}`}>Загрузка...</div>;
   }
@@ -66,7 +75,7 @@ export const Post = () => {
       />
       <div className={`${styles.Info}`}>
         <Link to={`/user/${postCreator?._id}`} className={`${styles.Author}`}>
-        <img
+          <img
             className={`${styles.AuthorAvatar}`}
             src={`http://localhost:5000/${postCreator?.avatar}`}
             alt=""
@@ -86,16 +95,26 @@ export const Post = () => {
           className={`${styles.CreateComment}`}
           onSubmit={(e) => e.preventDefault()}
         >
-          <img src={`http://localhost:5000/${avatar}`} alt=""  className={`${styles.UserAvatar}`}/>
+          <div className={`${styles.UserAvatarContainer}`}>
+          <img
+            src={`http://localhost:5000/${avatar}`}
+            alt=""
+            className={`${styles.UserAvatar}`}
+          />
+          </div>
           <textarea
-            maxLength={360}
+            ref={textareaRef}
+            maxLength={480}
+            onInput={handleInput}
             className={`${styles.TextComment}`}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
+          <div className={`${styles.ButtonCommentContainer}`}>
           <button className={`${styles.ButtonComment}`} onClick={handleSubmit}>
-            Отправить
+            <img src={rightArrow} alt="" className={`${styles.CommentImg}`} />
           </button>
+          </div>
         </form>
         <p className={`${styles.Title}`}>Коментарии</p>
         <div className={`${styles.List}`}>

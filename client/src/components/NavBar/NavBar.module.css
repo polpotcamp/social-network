@@ -3,9 +3,10 @@
     flex-direction: column;
     width: 150px;
     position: fixed;
-    padding-left: 50px;
-    padding-top: 300px;
-    gap: 10px;
+    justify-content: center;
+    height: 100%;
+    gap: 30px;
+    background-color: black;
 }
 .Link{
     color: white;

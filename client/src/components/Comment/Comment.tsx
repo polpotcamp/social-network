@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { TComment, TUser } from "../../utils/types";
 import styles from "./Comment.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 interface CommentProps {
   commentID: string;
 }
@@ -15,13 +16,13 @@ export const Comment: FC<CommentProps> = ({ commentID }) => {
     setComment(data);
   }, [commentID]);
   const fetchUser = useCallback(async () => {
-    if(comment !==null){
-    const { data } = await axios.get(
-      `http://localhost:5000/user/:${comment.author}`
-    );
-    console.log(data.data);
-    setUser(data.data);
-}
+    if (comment !== null) {
+      const { data } = await axios.get(
+        `http://localhost:5000/user/:${comment.author}`
+      );
+      console.log(data.data);
+      setUser(data.data);
+    }
   }, [comment?.author]);
   useEffect(() => {
     fetchUser();
@@ -36,7 +37,10 @@ export const Comment: FC<CommentProps> = ({ commentID }) => {
         src={`http://localhost:5000/${user?.avatar}`}
         alt=""
       />
-      <p className={`${styles.TextComment}`} >{comment.comment}</p>
+      <div className={`${styles.UserInfo}`}>
+        <Link to={`/user/${user?._id}`} className={`${styles.UserName}`}>{user.name}</Link>
+        <p  className={`${styles.TextComment}`}>{comment.comment}</p>
+      </div>
     </div>
   ) : null;
 };

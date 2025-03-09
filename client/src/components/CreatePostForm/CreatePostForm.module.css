@@ -12,26 +12,24 @@
 }
 .Text{
     width: 720px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .IntupTitle{
-    color: white;
     height: 30px;
     width: 720px;
-    border: 5px solid #2b2b2b;
-    background-color: #171717;
+    border: 2px solid #2b2b2b;
     padding: 0;
-    font-size: large;
+    font-size: 32px;
     text-align: center;
 }
 .IntupText{
-    color: white;
     resize: none;
     height: 400px;
     overflow: hidden;
     min-height: 50px;
     width: 720px;
-    border: 5px solid #2b2b2b;
-    background-color: #171717;
+    border: 2px solid #2b2b2b;
     padding: 0;
     overflow-y: auto;
 }

@@ -1,0 +1,37 @@
+.Image {
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.Comment {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #eee;
+}
+.UserInfo {
+    display: flex;
+    flex-direction: column;
+}
+.UserName {
+    width: 40px;
+    color: #222222;
+    text-decoration: none;
+}
+.UserName:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+.TextComment {
+    font-size: 20px;
+    width: 670px;
+    text-align: left;
+    margin: 0;
+    padding-top: 5px;
+    padding-right: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}

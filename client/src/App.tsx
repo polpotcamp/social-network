@@ -24,8 +24,8 @@ function App() {
   }, [dispatch]);
   return (
     <div className="App">
-      <AppHeader />
       {isauth ? <NavBar /> : null}
+      <AppHeader />
       <Routes>
         <Route
           path="/registration"

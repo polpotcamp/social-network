@@ -7,7 +7,6 @@
     flex-direction: column;
 }
 .NameColumn {
-    border-bottom: solid 1px #eee;
     border-top: solid 1px #eee;
     width: 100%;
     font-size: 48px;
@@ -20,6 +19,7 @@
     width: 1000px;
     display: flex;
     flex-direction: row;
+    padding: 0;
     gap: 15px;
 }
 .SortItem {

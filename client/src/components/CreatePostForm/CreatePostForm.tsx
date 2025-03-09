@@ -13,8 +13,8 @@ const CreatePostForm = () => {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("text", text);
-      if(image){
-      formData.append("image", image);
+      if (image) {
+        formData.append("image", image);
       }
       await CreatePost(formData).then(() => navigate("/"));
     } catch (error) {
@@ -44,7 +44,7 @@ const CreatePostForm = () => {
           }}
         />
       </label>
-      <div>
+      <>
         {image && (
           <img
             src={URL.createObjectURL(image)}
@@ -52,7 +52,7 @@ const CreatePostForm = () => {
             className={`${styles.Image}`}
           />
         )}
-      </div>
+      </>
       <label className={`${styles.Text}`}>
         Заголовок поста:
         <input
