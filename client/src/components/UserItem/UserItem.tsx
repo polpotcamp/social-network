@@ -24,7 +24,7 @@ export const UserItem: FC<UserItemProps> = ({ userId, type }) => {
         },
       }
     );
-    window.location.reload()
+    window.location.reload();
   };
   const fetchUser = useCallback(async () => {
     const { data } = await axios.get(`http://localhost:5000/user/:${userId}`);
@@ -34,22 +34,18 @@ export const UserItem: FC<UserItemProps> = ({ userId, type }) => {
     fetchUser();
   }, [fetchUser]);
   return user ? (
-    <div className={`${styles.Container}`}>
-      <Link to={`/user/${user._id}`}>
-        <img
-          src={`http://localhost:5000/${user.avatar}`}
-          className={`${styles.Image}`}
-          alt=""
-        />
-      </Link>
-      <Link to={`/user/${user._id}`}>
-        <p>{`${user.name} ${user.secondName}`}</p>
-      </Link>
+    <Link to={`/user/${user._id}`} className={`${styles.Container}`}>
+      <img
+        src={`http://localhost:5000/${user.avatar}`}
+        className={`${styles.Image}`}
+        alt=""
+      />
+      <p className={`${styles.Name}`}>{`${user.name} ${user.secondName}`}</p>
       {type === "follower" ? (
         <button className={`${styles.Button}`} onClick={addToFriends}>
           Добавить в друзья
         </button>
       ) : null}
-    </div>
+    </Link>
   ) : null;
 };

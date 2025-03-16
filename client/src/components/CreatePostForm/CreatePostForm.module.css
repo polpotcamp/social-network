@@ -20,8 +20,12 @@
     width: 720px;
     border: 2px solid #2b2b2b;
     padding: 0;
-    font-size: 32px;
+    font-size: 24px;
     text-align: center;
+}
+.Error{
+    font-size: 28px;
+    color: red;
 }
 .IntupText{
     resize: none;
@@ -32,4 +36,26 @@
     border: 2px solid #2b2b2b;
     padding: 0;
     overflow-y: auto;
+}
+.Buttons{
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+}
+.Button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    font-size: 32px;
+    margin: auto;
+    background-color: #222222;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont,  'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;;
+}
+.ButtonDisable{
+    opacity: 0.6;
+    cursor:not-allowed;
 }

@@ -7,7 +7,7 @@ export default function auth(req, res, next) {
   const {authorization} = req.headers;
   if (!authorization) {
     throw next(
-      new UnauthorizedError(`Необходима авторизация f ${authorization}`)
+      new UnauthorizedError(`Необходима авторизация  ${authorization}`)
     );
   }
   const token = extractBearerToken(authorization);

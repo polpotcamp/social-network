@@ -5,10 +5,13 @@
     border-radius: 50%;
 }
 .Container{
-    background-color: #171717;
+    border: 1px solid #eee;
     z-index: 0;
 }
 .Button{
     position: relative;
     z-index: 10;
+}
+.Name{
+    text-decoration: none;
 }

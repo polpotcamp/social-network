@@ -16,7 +16,7 @@ export const FriendsList = () => {
         </div>
       </div>
       <div className={`${styles.Column}`}>
-        <h2 className={`${styles.Title}`}> Подпищики</h2>
+        <h2 className={`${styles.Title}`}> Подписчики</h2>
         <div className={`${styles.FollowersList}`}>
           {" "}
           {followers?.map((id:any, idx:any) => (

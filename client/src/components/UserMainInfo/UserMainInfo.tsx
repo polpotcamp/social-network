@@ -79,7 +79,7 @@ const UserMainInfo: FC = () => {
           <p
             className={`${styles.Name}`}
           >{`${user.name} ${user.secondName}`}</p>
-          <p className={`${styles.About}`}>{user.about}</p>
+          <p className={`${styles.About}`}>О себе: {user.about}</p>
           {user._id !== myId ? (
             <div className={`${styles.Buttons}`}>
               {status()}
@@ -94,7 +94,9 @@ const UserMainInfo: FC = () => {
           )}
         </div>
       </div>
-      <p> Посты </p>
+      <h2 className={`${styles.NameColumn}`}>
+        {user._id === myId ? "Мои посты" : "Посты пользователя"}
+      </h2>
       <div className={`${styles.Posts}`}>
         {posts?.map((post, idx) => (
           <PostItem key={idx} post={post} />

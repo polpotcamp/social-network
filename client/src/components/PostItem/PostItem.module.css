@@ -1,10 +1,4 @@
-.image {
-    width: 340px;
-    height: 300px;
-    object-fit: fill;
-    margin-right: 30px;
-}
-.Container{
+.Container {
     border-bottom: solid 1px #eee;
     box-sizing: border-box;
     width: 100%;
@@ -21,7 +15,13 @@
     width: 1000px;
     position: relative;
 }
-.Column{
+.Image {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin-right: 30px;
+}
+.Column {
     display: flex;
     flex-direction: column;
 }
@@ -50,7 +50,7 @@
     align-items: center;
 }
 .AuthorName:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 .AuthorAvatar {
     width: 32px;
@@ -75,7 +75,7 @@
 .Icon {
     width: 30px;
     height: 30px;
-    filter: invert(0%) sepia(18%) saturate(8%) hue-rotate(62deg) brightness(64%) contrast(73%)
+    filter: invert(0%) sepia(18%) saturate(8%) hue-rotate(62deg) brightness(64%) contrast(73%);
 }
 .Link:hover {
     opacity: 0.6;

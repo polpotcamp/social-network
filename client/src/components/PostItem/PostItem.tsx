@@ -30,7 +30,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
         <img
           src={`http://localhost:5000/${post.imgUrl}`}
           alt=""
-          className={`${styles.image}`}
+          className={`${styles.Image}`}
         />
         <div className={`${styles.Column}`}>
           <div className={`${styles.TwoColumns}`}>
@@ -44,7 +44,10 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
                 src={`http://localhost:5000/${user?.avatar}`}
                 alt=""
               />
-              <p  className={`${styles.AuthorName}`}> {user ? user.name : "автор неизвестен"}</p>
+              <p className={`${styles.AuthorName}`}>
+                {" "}
+                {user ? user.name : "автор неизвестен"}
+              </p>
             </Link>
             <Moment fromNow>{post.createdAt}</Moment>
           </div>
