@@ -36,6 +36,7 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const nameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    setName(value);
     if (value.length === 0) {
       setNameError("Имя не должено быть пустым");
     } else {
@@ -44,6 +45,7 @@ const RegistrationForm = () => {
   };
   const secondNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    setSecondName(value);
     if (value.length === 0) {
       setSecondNameError("фамилия не должена быть пустой");
     } else {
@@ -76,6 +78,7 @@ const RegistrationForm = () => {
   };
   const aboutHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    setAbout(value);
     if (value.length === 0) {
       setAboutError("Описание не должено быть пустым");
     } else {
@@ -145,6 +148,7 @@ const RegistrationForm = () => {
           <p className={styles.Error}>{emailError}</p>
         )}
         <input
+          value={email}
           onBlur={blurHandler}
           name="email"
           type="email"
@@ -156,6 +160,7 @@ const RegistrationForm = () => {
           <p className={styles.Error}>{passwordError}</p>
         )}
         <input
+          value={password}
           onBlur={blurHandler}
           name="password"
           type="password"
@@ -165,6 +170,7 @@ const RegistrationForm = () => {
         />
         {nameDirty && nameError && <p className={styles.Error}>{nameError}</p>}
         <input
+          value={name}
           onBlur={blurHandler}
           name="name"
           type="text"
@@ -176,6 +182,7 @@ const RegistrationForm = () => {
           <p className={styles.Error}>{secondNameError}</p>
         )}
         <input
+          value={secondName}
           onBlur={blurHandler}
           name="secondName"
           type="text"
@@ -209,6 +216,7 @@ const RegistrationForm = () => {
           <p className={styles.Error}>{aboutError}</p>
         )}
         <input
+          value={about}
           onBlur={blurHandler}
           name="about"
           type="text"
