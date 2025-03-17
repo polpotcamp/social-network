@@ -1,21 +1,48 @@
-.Container{
-    margin: 0 auto ;
+.Container {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
-.text{
+.text {
     font-size: 24px;
 }
-.form{
-    display:  flex;
+.form {
+    display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
 }
-.input{
+.input {
     width: 300px;
     height: 25px;
 }
-.Link{
+.Button {
+    background-color: #222222;
     color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    cursor: pointer;
+    width: 350px;
+    height: 50px;
+    font-size: 32px;
+}
+.ButtonDisable {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.Link {
+    text-decoration: none;
+    color: #000080;
+}
+.Error {
+    font-size: 28px;
+    color: red;
+}
+.Link:hover {
+    opacity: 0.6;
+}
+.Image{
+    width: 150px;
+    height:150px;
+    border-radius: 50%;
 }

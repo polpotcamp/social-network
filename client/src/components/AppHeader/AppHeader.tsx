@@ -3,15 +3,14 @@ import styles from "./AppHeader.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { resetState } from "../../store/reduces/UserSlice";
+import { logout } from "../../services/async/Logout";
 const AppHeader: FC = () => {
   const avatar = useAppSelector((state) => state.userReducer.userAvatar);
   const id = useAppSelector((store) => store.userReducer.userId);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch;
-  const logout = () => {
-    localStorage.clear();
-   // dispatch(resetState());
+  const dispatch = useAppDispatch();
+  const LogoutButton = () => {
+    dispatch(logout())
     navigate("/login");
   };
   useEffect(() => {}, [avatar]);
@@ -40,7 +39,7 @@ const AppHeader: FC = () => {
                 className={`${styles.Img}`}
               />
             </Link>
-            <button className={`${styles.LogOut}`} onClick={logout}>
+            <button className={`${styles.LogOut}`} onClick={LogoutButton}>
               Выйти
             </button>
           </div>

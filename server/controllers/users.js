@@ -8,6 +8,25 @@ import NotFoundError from "../errors/not-found-err.js";
 import jwt from "jsonwebtoken";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import blackList from "../models/blackList.js";
+import { extractBearerToken } from "../middlewares/auth.js";
+export const logout = async (req, res, next) => {
+  console.log('ch')
+  try {
+    const { authorization } = req.headers;
+    const token = extractBearerToken(authorization);
+    const checkIfBlacklisted = await blackList.findOne({ token: token });
+    if (checkIfBlacklisted) return res.sendStatus(204);
+    const newBlacklist = new blackList({
+      token: token,
+    });
+    await newBlacklist.save();
+    return res.status(HTTP_STATUS_OK).send({ message: "Вы успешно вышли" });
+  } catch (err) {
+    console.log('wh')
+    return next(err);
+  }
+};
 export const registration = async (req, res, next) => {
   try {
     const { name, about, email, password, secondName } = req.body;
@@ -38,17 +57,14 @@ export const registration = async (req, res, next) => {
           })
         )
         .then(() =>
-          res
-            .status(HTTP_STATUS_CREATED)
-            .send(`вы успешно зарегистрировались`)
+          res.status(HTTP_STATUS_CREATED).send(`вы успешно зарегистрировались`)
         );
     } else
       bcrypt.hash(password, 10).then((hash) =>
         User.create({
           name,
           secondName,
-          avatar:
-            "kartinki-znak-voprosa-31.jpg",
+          avatar: "kartinki-znak-voprosa-31.jpg",
           about,
           email,
           password: hash,
@@ -160,13 +176,13 @@ export const addFriends = async (req, res, next) => {
   try {
     const friendOne = await User.findByIdAndUpdate(req.body.person, {
       $push: { friends: req.body.follower },
-      $pull: { followers: req.body.follower }
+      $pull: { followers: req.body.follower },
     });
     const friendTwo = await User.findByIdAndUpdate(req.body.follower, {
       $push: { friends: req.body.person },
-      $pull: { followings: req.body.person }
+      $pull: { followings: req.body.person },
     });
-    return res.status(HTTP_STATUS_OK).send({ data: friendOne,friendTwo });
+    return res.status(HTTP_STATUS_OK).send({ data: friendOne, friendTwo });
   } catch (err) {
     return next(err);
   }

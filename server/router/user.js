@@ -8,13 +8,11 @@ import {
   getAllUsers,
   addFollwers,
   addFriends,
+  logout,
 } from "../controllers/users.js";
 import auth from "../middlewares/auth.js";
 const router = express.Router();
-router.post(
-  "/signup",
-  registration
-);
+router.post("/signup", registration);
 router.post(
   "/signin",
   celebrate({
@@ -27,7 +25,8 @@ router.post(
 );
 router.get("/user/me", auth, getUserData);
 router.get("/user/:userId", getUserById);
+router.get("/logout", logout);
 router.get("/users/", getAllUsers);
-router.post("/user/addToFoll",auth, addFollwers);
-router.post("/user/addToFriend",auth, addFriends);
+router.post("/user/addToFoll", auth, addFollwers);
+router.post("/user/addToFriend", auth, addFriends);
 export default router;

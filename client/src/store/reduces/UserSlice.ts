@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TInitialStateUser } from "../../utils/types";
 import { TUser } from "../../utils/types";
 import { login } from "../../services/async/Login";
+import { logout } from "../../services/async/Logout";
 import { GetUserData } from "../../services/async/GetUserData";
 interface dataUser {
   data: TUser;
@@ -56,6 +57,15 @@ export const userSlice = createSlice({
         state.userFollowers = action.payload.data.followers;
         state.userFollowings = action.payload.data.followings;
         state.userFriends = action.payload.data.friends;
+      }
+    );
+    builder.addCase(
+      logout.fulfilled,
+      (state) => {
+        state.userId = ""
+        state.isAuthorization = false;
+        state.isAuthChecked = false;
+        localStorage.clear();
       }
     );
   },
