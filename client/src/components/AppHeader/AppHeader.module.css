@@ -55,3 +55,36 @@
 .LogOut:hover {
     opacity: 0.6;
 }
+@media (max-width:1430px) and (min-width:720px) {
+    .Container {
+        width: 720px;
+    }
+    .Header{
+        height: 40px;
+    }
+    .Img{
+        width: 32px;
+        height: 32px;
+    }
+}
+@media (max-width:720px) and (min-width:320px) {
+    .Container {
+        width: 320px;
+    }
+    .Header{
+        height: 30px;
+    }
+    .Img{
+        width: 24px;
+        height: 24px;
+    }
+    .Text{
+        font-size: 14px;
+    }
+    .Link{
+        font-size: 14px;
+    }
+    .LogOut{
+        font-size: 14px;
+    }
+}

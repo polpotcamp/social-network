@@ -16,12 +16,13 @@
     position: relative;
 }
 .Image {
-    width: 300px;
+    width: 30%;
     height: 300px;
     object-fit: contain;
     margin-right: 30px;
 }
 .Column {
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
@@ -89,4 +90,47 @@
 .Number {
     margin-left: 4px;
     color: #222222;
+}
+@media (max-width: 1430px) and (min-width: 800px) {
+    .PostItem {
+        width: 720px;
+    }
+    .Image {
+        height: 200px;
+    }
+    .Title {
+        font-size: 24px;
+    }
+    .Text {
+        max-height: 150px;
+    }
+    .Bot {
+        margin-top: 10px;
+    }
+}
+@media (max-width: 800px) and (min-width: 320px) {
+    .PostItem {
+        width: 320px;
+    }
+
+    .Image {
+        height: 200px;
+        margin-right: 10px;
+    }
+    .AuthorName{
+        font-size: 12px;
+    }
+    .Date{
+        font-size: 12px;
+    }
+    .Title {
+        font-size: 14px;
+    }
+    .Text {
+        max-height: 88px;
+    }
+    .Icon{
+        width: 20px;
+        height: 20px;
+    }
 }

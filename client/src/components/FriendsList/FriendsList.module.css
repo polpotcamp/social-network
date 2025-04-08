@@ -1,18 +1,40 @@
-.Container{
-    margin:  0 auto;
+.Container {
+    margin: 0 auto;
     width: 1000px;
     display: flex;
     flex-direction: row;
 }
-.FriendsList{
-    width: 800px;
+.FriendsList {
+    width: 80%;
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(4, 1fr);
 }
-.FollowersList{
+.FollowersList {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(1, 1fr);
-    width: 200px;
+    width: 20%;
+}
+@media (max-width: 1430px) and (min-width: 720px) {
+    .Container {
+        width: 720px;
+    }
+    .FriendsList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .Title {
+        font-size: 24px;
+    }
+}
+@media (max-width: 720px) and (min-width: 320px) {
+    .Container {
+        width: 320px;
+    }
+    .FriendsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Title {
+        font-size: 16px;
+    }
 }

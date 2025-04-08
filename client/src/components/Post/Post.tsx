@@ -9,6 +9,7 @@ import Moment from "react-moment";
 import Comment from "../Comment/Comment";
 import view from "../../Images/view.svg";
 import rightArrow from "../../Images/right-arrow.svg";
+import commentIcon from "../../Images/comment.svg";
 import { useAppSelector } from "../../hooks/redux";
 import { postAPI } from "../../services/PostService";
 export const Post = () => {
@@ -19,7 +20,7 @@ export const Post = () => {
   const params = useParams();
   const postId = params.id as string;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-
+  const avatar = useAppSelector((state) => state.userReducer.userAvatar);
   const handleInput = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -27,7 +28,6 @@ export const Post = () => {
         textareaRef.current.scrollHeight + "px";
     }
   };
-  const avatar = useAppSelector((state) => state.userReducer.userAvatar);
   const { data: fetchedPost } = postAPI.useFetchPostQuery(postId, {
     skip: !params.id,
   });
@@ -86,9 +86,15 @@ export const Post = () => {
       </div>
       <h2 className={`${styles.Title}`}>{post.title}</h2>
       <p className={`${styles.Text}`}>{post.text}</p>
-      <div className={`${styles.Views}`}>
-        <img src={view} alt="ViewsIcon" className={`${styles.ViewsIcon}`} />
-        <span>{post.views}</span>
+      <div className={`${styles.Bot}`}>
+        <div className={`${styles.IconWithText}`}>
+          <img className={`${styles.Icon}`} src={view} alt="" />
+          <span className={`${styles.Number}`}>{post.views}</span>
+        </div>
+        <div className={`${styles.IconWithText}`}>
+          <img src={commentIcon} alt="" className={`${styles.Icon}`} />
+          <span className={`${styles.Number}`}>{post.comments.length}</span>
+        </div>
       </div>
       <div className={`${styles.Comments}`}>
         <form
@@ -96,11 +102,11 @@ export const Post = () => {
           onSubmit={(e) => e.preventDefault()}
         >
           <div className={`${styles.UserAvatarContainer}`}>
-          <img
-            src={`http://localhost:5000/${avatar}`}
-            alt=""
-            className={`${styles.UserAvatar}`}
-          />
+            <img
+              src={`http://localhost:5000/${avatar}`}
+              alt=""
+              className={`${styles.UserAvatar}`}
+            />
           </div>
           <textarea
             ref={textareaRef}
@@ -111,9 +117,12 @@ export const Post = () => {
             onChange={(e) => setComment(e.target.value)}
           />
           <div className={`${styles.ButtonCommentContainer}`}>
-          <button className={`${styles.ButtonComment}`} onClick={handleSubmit}>
-            <img src={rightArrow} alt="" className={`${styles.CommentImg}`} />
-          </button>
+            <button
+              className={`${styles.ButtonComment}`}
+              onClick={handleSubmit}
+            >
+              <img src={rightArrow} alt="" className={`${styles.CommentImg}`} />
+            </button>
           </div>
         </form>
         <p className={`${styles.Title}`}>Коментарии</p>

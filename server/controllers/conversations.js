@@ -33,10 +33,10 @@ export const getConversationUser = async (req, res) => {
 export const getConversationTwoUsers = async (req, res, next) => {
   let userId = req.params.firstUserId;
   userId = userId.replace(":", "");
-  let secondUserId = req.params.secondUserId
+  let secondUserId = req.params.secondUserId;
   secondUserId = secondUserId.replace(":", "");
   if (userId !== req.user._id) {
-   return  next(new UnauthorizedError("вы не вы "));
+    return next(new UnauthorizedError("вы не вы "));
   }
   try {
     let conversation = await Conversation.findOne({
@@ -55,28 +55,16 @@ export const getConversationTwoUsers = async (req, res, next) => {
     return next(err);
   }
 };
-export const  getConversation = async (req, res, next) => {
-  try{
-    let convId =req.params.convId
-    convId = convId.replace(":", "");
-      const conversation = await Conversation.findById(convId);
-      if (!conversation) {
-        return res.status(404).json({ message: 'Conversation not found' });
-        }
-    return res.status(200).json(conversation);
-  }
-  catch (err) {
-    return next(err);
-  }
-}
-const createConversationFunc = async (senderId, receiverId) => {
+export const getConversation = async (req, res, next) => {
   try {
-    const newConversation = new Conversation({
-      members: [senderId, receiverId],
-    });
-    const savedConversation = await newConversation.save();
-    return savedConversation;
+    let convId = req.params.convId;
+    convId = convId.replace(":", "");
+    const conversation = await Conversation.findById(convId);
+    if (!conversation) {
+      return res.status(404).json({ message: "Conversation not found" });
+    }
+    return res.status(200).json(conversation);
   } catch (err) {
-    throw err;
+    return next(err);
   }
 };

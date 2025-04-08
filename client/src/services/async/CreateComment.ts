@@ -8,9 +8,10 @@ export const CreateComment = createAsyncThunk(
   "comment/create",
   async (data: TCreateComment, thunkAPI) => {
     try {
-      console.log(data);
-      const responce = await axios.post(`http://localhost:5000/comments/:${data.postId}`,
-        data,{
+      const responce = await axios.post(
+        `http://localhost:5000/comments/:${data.postId}`,
+        data,
+        {
           headers: {
             Authorization: JSON.parse(localStorage.getItem("Token") as string),
           },

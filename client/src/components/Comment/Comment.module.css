@@ -16,7 +16,7 @@
     flex-direction: column;
 }
 .UserName {
-    width: 40px;
+    text-align: start;
     color: #222222;
     text-decoration: none;
 }
@@ -34,4 +34,9 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+}
+@media (max-width:720px) and (min-width:320px) {
+    .TextComment{
+        width: 240px;
+    }
 }

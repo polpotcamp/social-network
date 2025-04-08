@@ -20,7 +20,6 @@ export const Comment: FC<CommentProps> = ({ commentID }) => {
       const { data } = await axios.get(
         `http://localhost:5000/user/:${comment.author}`
       );
-      console.log(data.data);
       setUser(data.data);
     }
   }, [comment?.author]);

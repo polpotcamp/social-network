@@ -11,7 +11,6 @@ import { fileURLToPath } from "url";
 import blackList from "../models/blackList.js";
 import { extractBearerToken } from "../middlewares/auth.js";
 export const logout = async (req, res, next) => {
-  console.log('ch')
   try {
     const { authorization } = req.headers;
     const token = extractBearerToken(authorization);
@@ -23,7 +22,6 @@ export const logout = async (req, res, next) => {
     await newBlacklist.save();
     return res.status(HTTP_STATUS_OK).send({ message: "Вы успешно вышли" });
   } catch (err) {
-    console.log('wh')
     return next(err);
   }
 };
@@ -187,11 +185,37 @@ export const addFriends = async (req, res, next) => {
     return next(err);
   }
 };
-// export const getFollowers =async (req, res, next) => {
-//   try {
-//     const user = await User.findById(req.body.userId)
-//     return res.status(HTTP_STATUS_OK).send({ data: friendOne,friendTwo });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
+export const updateUser = async (req, res, next) => {
+  try {
+    if (req.files) {
+      let avatar = Date.now().toString() + req.files.avatar.name;
+      const __dirname = dirname(fileURLToPath(import.meta.url));
+      req.files.avatar.mv(path.join(__dirname, "..", "uploads", avatar));
+      const { name, secondName, about, id } = req.body;
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        {
+          name,
+          secondName,
+          about,
+          avatar,
+        },
+        { new: true, runValidators: true }
+      );
+      return res.status(HTTP_STATUS_OK).send({ updatedUser });
+    }
+    const { name, secondName, about, id } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      {
+        name,
+        secondName,
+        about,
+      },
+      { new: true, runValidators: true }
+    );
+    return res.status(HTTP_STATUS_OK).send({ updatedUser });
+  } catch (err) {
+    return next(err);
+  }
+};

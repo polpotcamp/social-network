@@ -1,15 +1,54 @@
 .NavBar{
     display: flex;
+    flex-direction: row;
+    position: fixed;
+    height: 100%;
+    gap: 5px;
+    z-index: 10;
+}
+.Links{
+    background-color: black;
+    display: flex;
+    gap: 30px;
     flex-direction: column;
     width: 150px;
-    position: fixed;
     justify-content: center;
+}
+.LinksNone{
+    display: none;
+}
+.Burger{
     height: 100%;
-    gap: 30px;
-    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.Img{
+    width: 40px;
+    height: 40px;
 }
 .Link{
     color: white;
     text-decoration: none;
     font-size: large;
+}
+.Link:hover{
+    opacity: 0.6;
+}
+@media (max-width:1430px) and (min-width:720px) {
+    .Links{
+        gap: 15px;
+        width: 110px;
+    }
+    .Img{
+        width: 30px;
+        height: 30px;
+    }
+    .Link{
+        font-size: 16px;
+    }
+}
+@media (max-width:720px) and (min-width:320px) {
+
 }

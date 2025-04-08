@@ -4,8 +4,12 @@ import { TUser } from "../../utils/types";
 import { login } from "../../services/async/Login";
 import { logout } from "../../services/async/Logout";
 import { GetUserData } from "../../services/async/GetUserData";
+import { ChangeUserData } from "../../services/async/ChangeUserData";
 interface dataUser {
   data: TUser;
+}
+interface updatedUser {
+  updatedUser: TUser;
 }
 interface dataToken {
   token: string;
@@ -27,9 +31,7 @@ const initialState: TInitialStateUser = {
 export const userSlice = createSlice({
   initialState,
   name: "user",
-  reducers: {
-    resetState: () => initialState,
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.rejected, (state, action: PayloadAction<any>) => {
       console.log(action.payload);
@@ -59,16 +61,22 @@ export const userSlice = createSlice({
         state.userFriends = action.payload.data.friends;
       }
     );
+    builder.addCase(logout.fulfilled, (state) => {
+      state.userId = "";
+      state.isAuthorization = false;
+      state.isAuthChecked = false;
+      localStorage.clear();
+    });
     builder.addCase(
-      logout.fulfilled,
-      (state) => {
-        state.userId = ""
-        state.isAuthorization = false;
-        state.isAuthChecked = false;
-        localStorage.clear();
+      ChangeUserData.fulfilled,
+      (state, action: PayloadAction<updatedUser>) => {
+        console.log(action.payload);
+        state.userName = action.payload.updatedUser.name;
+        state.userSecondName = action.payload.updatedUser.secondName;
+        state.userAbout = action.payload.updatedUser.about;
+        state.userAvatar = action.payload.updatedUser.avatar;
       }
     );
   },
 });
-export const { resetState } = userSlice.actions;
 export default userSlice.reducer;

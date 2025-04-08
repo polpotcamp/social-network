@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useCallback } from "react";
+import { FC, useEffect, useState} from "react";
 import styles from "./MessegeItem.module.css";
 import { format } from "timeago.js";
 import { TMessage, TUser } from "../../utils/types";
@@ -8,15 +8,15 @@ interface MessagerProps {
 }
 const MessegeItem: FC<MessagerProps> = ({ message }) => {
   const [user, setUser] = useState<TUser>();
-  const fetchUser = useCallback(async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/user/:${message.sender}`
-    );
-    setUser(data.data);
-  }, [message.sender]);
   useEffect(() => {
+    const fetchUser = async () => {
+      const { data } = await axios.get(
+        `http://localhost:5000/user/:${message.sender}`
+      );
+      setUser(data.data); 
+    };
     fetchUser();
-  }, [fetchUser]);
+  }, [message.sender]);
   return user ? (
     <div className={`${styles.Container}`}>
       <img

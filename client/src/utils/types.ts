@@ -47,6 +47,7 @@ export type TConversation = {
   readonly _id: string;
 };
 export type TMessage = {
+  readonly _id: string;
   readonly conversationId: string;
   readonly sender: string;
   readonly text: string;

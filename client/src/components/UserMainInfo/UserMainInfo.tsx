@@ -3,7 +3,7 @@ import styles from "./UserMainInfo.module.css";
 import axios from "axios";
 import { useAppSelector } from "../../hooks/redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { TConversation, TPost, TUser } from "../../utils/types";
+import { TPost, TUser } from "../../utils/types";
 import PostItem from "../PostItem/PostItem";
 const UserMainInfo: FC = () => {
   const params = useParams();
@@ -21,6 +21,21 @@ const UserMainInfo: FC = () => {
     );
     setPosts(data);
   }, [params.id]);
+  const addToFriends = async () => {
+    await axios.post(
+      `http://localhost:5000/user/addToFriend`,
+      {
+        person: myId,
+        follower: user?._id,
+      },
+      {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("Token") as string),
+        },
+      }
+    );
+    window.location.reload();
+  };
   const addUserToFollowers = async () => {
     await axios.post(
       `http://localhost:5000/user/addToFoll`,
@@ -47,6 +62,12 @@ const UserMainInfo: FC = () => {
       return <p>Вы подписанны</p>;
     } else if (user?.friends.includes(myId)) {
       return <div></div>;
+    } else if (user?.followings.includes(myId)) {
+      return (
+        <button className={`${styles.Button}`} onClick={addToFriends}>
+          Принять заявку в друзья
+        </button>
+      );
     } else {
       return (
         <button className={`${styles.Button}`} onClick={addUserToFollowers}>
@@ -65,8 +86,10 @@ const UserMainInfo: FC = () => {
       }
     );
     navigate(`/messenger/:${data.data._id}`);
-    console.log(data);
   };
+  const toEdit = async ()=>{
+    navigate(`/edit`);
+  }
   return user !== null ? (
     <div className={`${styles.Column}`}>
       <div className={`${styles.Container}`}>
@@ -89,7 +112,7 @@ const UserMainInfo: FC = () => {
             </div>
           ) : (
             <div>
-              <button className={`${styles.Button}`}>Редактировать</button>
+              <button className={`${styles.Button}`} onClick={toEdit}>Редактировать</button>
             </div>
           )}
         </div>

@@ -49,7 +49,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
                 {user ? user.name : "автор неизвестен"}
               </p>
             </Link>
-            <Moment fromNow>{post.createdAt}</Moment>
+            <Moment fromNow className={`${styles.Date}`}>{post.createdAt}</Moment>
           </div>
           <Link to={`/posts/${post._id}`} className={`${styles.Title}`}>
             {post.title}
@@ -57,7 +57,7 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
           <p className={`${styles.Text}`}>{post.text}</p>
           <div className={`${styles.Bot}`}>
             <div className={`${styles.IconWithText}`}>
-              <img className={`${styles.Icon}`} src={view} alt="" />{" "}
+              <img className={`${styles.Icon}`} src={view} alt="" />
               <span className={`${styles.Number}`}>{post.views}</span>
             </div>
             <Link

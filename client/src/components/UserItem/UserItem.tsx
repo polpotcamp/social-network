@@ -8,9 +8,10 @@ interface UserItemProps {
   userId: string;
   type?: string;
 }
-export const UserItem: FC<UserItemProps> = ({ userId, type }) => {
-  const [user, setUsers] = useState<TUser>();
+export const UserItem: FC<UserItemProps> = ({ userId }) => {
+  const [user, setUser] = useState<TUser>();
   const myId = useAppSelector((store) => store.userReducer.userId);
+  const myFollowers =useAppSelector((store)=> store.userReducer.userFollowers)
   const addToFriends = async () => {
     await axios.post(
       `http://localhost:5000/user/addToFriend`,
@@ -24,15 +25,22 @@ export const UserItem: FC<UserItemProps> = ({ userId, type }) => {
         },
       }
     );
-    window.location.reload();
   };
-  const fetchUser = useCallback(async () => {
-    const { data } = await axios.get(`http://localhost:5000/user/:${userId}`);
-    setUsers(data.data);
-  }, []);
   useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:5000/user/:${userId}`
+        );
+        setUser(data.data); 
+      } catch (error) {
+        console.error("Ошибка при загрузке пользователя:", error);
+
+      }
+    };
+
     fetchUser();
-  }, [fetchUser]);
+  }, [userId]);
   return user ? (
     <Link to={`/user/${user._id}`} className={`${styles.Container}`}>
       <img
@@ -41,7 +49,7 @@ export const UserItem: FC<UserItemProps> = ({ userId, type }) => {
         alt=""
       />
       <p className={`${styles.Name}`}>{`${user.name} ${user.secondName}`}</p>
-      {type === "follower" ? (
+      {myFollowers.includes(user._id) ? (
         <button className={`${styles.Button}`} onClick={addToFriends}>
           Добавить в друзья
         </button>

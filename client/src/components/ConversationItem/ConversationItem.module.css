@@ -1,11 +1,30 @@
-.Container{
-    width: 100%;
+.Container {
+    margin: auto;
+    border-bottom: 1px solid #eee;
+}
+.Link{
+    margin: auto;
+    width: 1000px;
     display: flex;
     flex-direction: row;
-    background-color: #171717;
+    text-decoration: none;
+    align-items: center;
 }
-.Img{
+.Link:hover{
+    opacity: 0.6;
+}
+.Img {
     width: 100px;
     border-radius: 50%;
     margin-right: 20px;
+}
+@media (max-width:1430px) and (min-width:720px) {
+    .Link{
+        width: 720px;
+    }
+}
+@media (max-width:720px) and (min-width:320px) {
+    .Link{
+        width: 320px;
+    }
 }

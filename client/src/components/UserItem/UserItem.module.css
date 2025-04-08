@@ -1,17 +1,35 @@
-.Image{
+.Image {
     width: 128px;
     height: 128px;
     margin-top: 10px;
     border-radius: 50%;
 }
-.Container{
+.Container {
     border: 1px solid #eee;
-    z-index: 0;
-}
-.Button{
-    position: relative;
-    z-index: 10;
-}
-.Name{
     text-decoration: none;
+}
+.Button {
+    position: relative;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    cursor: pointer;
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    background-color: #222222;
+    border: 0 none;
+    padding: 0;
+}
+@media (max-width:1430px) and (min-width:720px) {
+    .Image {
+        width: 64px;
+        height: 64px;
+    }
+}
+@media (max-width:720px) and (min-width:320px) {
+    .Image {
+        width:32px;
+        height: 32px;
+    }
 }

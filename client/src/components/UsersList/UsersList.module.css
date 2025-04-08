@@ -9,3 +9,19 @@
     gap: 10px;
     grid-template-columns: repeat(5, 1fr);
 }
+@media (max-width:1430px) and (min-width:720px) {
+    .Container{
+        width: 720px;
+    }
+    .List{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width:720px) and (min-width:320px) {
+    .Container{
+        width: 320px;
+    }
+    .List{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

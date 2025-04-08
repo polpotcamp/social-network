@@ -1,0 +1,36 @@
+.Container{
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+}
+.Image {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.Image:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+.Input{
+    width: 240px;
+    margin-top: 10px;
+}
+.Button{
+    background-color: #222222;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    cursor: pointer;
+    width: 320px;
+    height: 50px;
+    font-size: 32px;
+    margin-top: 10px;
+}
+.ButtonDisable {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

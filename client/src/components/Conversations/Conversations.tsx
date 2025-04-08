@@ -18,7 +18,7 @@ const Conversations: FC = () => {
       }
     );
     setConversations(data);
-  }, []);
+  }, [userId]);
   useEffect(() => {
     fetchConversations();
   }, [fetchConversations]);

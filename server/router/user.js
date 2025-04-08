@@ -9,6 +9,7 @@ import {
   addFollwers,
   addFriends,
   logout,
+  updateUser,
 } from "../controllers/users.js";
 import auth from "../middlewares/auth.js";
 const router = express.Router();
@@ -26,6 +27,7 @@ router.post(
 router.get("/user/me", auth, getUserData);
 router.get("/user/:userId", getUserById);
 router.get("/logout", logout);
+router.patch("/user/update", auth, updateUser);
 router.get("/users/", getAllUsers);
 router.post("/user/addToFoll", auth, addFollwers);
 router.post("/user/addToFriend", auth, addFriends);

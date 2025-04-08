@@ -1,14 +1,15 @@
 .Container{
     display: flex;
     flex-direction: column;
-    width: 750px;
+    width: 720px;
     margin-left: auto;
     margin-right:auto ;
     margin-top: 20px;
 }
 .Image{
     margin-top: 20px;
-    margin-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
     width: 720px;
     height: 480px;
 }
@@ -17,6 +18,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.Author:hover{
+    text-decoration: underline;
 }
 .AuthorAvatar{
     width: 32px;
@@ -40,8 +44,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 10px;
+    width: 100%;
 }
 .Title{
     font-size: 52px;
@@ -55,17 +59,24 @@
     word-wrap: break-word;
     text-align: start;
 }
-.Views{
-    margin-top: 10px;
-    width: 40px;
+.Bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.IconWithText {
+    text-decoration: none;
+    max-width: 150px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.ViewsIcon{
+.Icon {
     width: 30px;
     height: 30px;
-    margin-right: 8px;
+    filter: invert(0%) sepia(18%) saturate(8%) hue-rotate(62deg) brightness(64%) contrast(73%);
 }
 .CreateComment{
     display: flex;
@@ -106,4 +117,16 @@
     gap: 20px;
     display: flex;
     flex-direction: column-reverse;
+}
+@media (max-width:720px) and (min-width:320px) {
+    .Container{
+        width: 320px;
+    }
+    .Image{
+        width: 320px;
+        height: 320px;
+    }
+    .Title{
+        font-size: 32px;
+    }
 }

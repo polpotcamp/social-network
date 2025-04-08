@@ -10,23 +10,36 @@ interface ConversationItemProps {
 const ConversationItem: FC<ConversationItemProps> = ({ conv }) => {
   const [user, setUser] = useState<TUser | null>(null);
   const userId = useAppSelector((store) => store.userReducer.userId);
-  const fetchUser = useCallback(async (userID:string) => {
-    const { data } = await axios.get(`http://localhost:5000/user/${userID}`);
-    setUser(data.data);
-  }, []);
   useEffect(() => {
-    const secUserId = conv.members.filter((item) => item !== userId);
+    const secUserId = conv.members.filter((item: string) => item !== userId);
+
+    const fetchUser = async (userID: string) => {
+      try {
+        const { data } = await axios.get(`http://localhost:5000/user/${userID}`);
+        setUser(data.data);
+      } catch (error) {
+        console.error("Ошибка при загрузке пользователя:", error);
+
+      }
+    };
+
     fetchUser(secUserId[0]);
-  }, [fetchUser]);
-  return (
-    user?
-    <Link to={`/messenger/:${conv._id}`} className={`${styles.Container}`}>
-      <img src={`http://localhost:5000/${user.avatar}`} alt="" className={`${styles.Img}`} />
-      <div className={`${styles.Info}`} >
-        <p className={`${styles.Name}`}>{`${user.name} ${user.secondName}`}</p>
-        <p>{user?.about}</p>
-      </div>
-    </Link>:null
-  );
+  }, [userId, conv]);
+  return user ? (
+    <div className={`${styles.Container}`}>
+      <Link to={`/messenger/:${conv._id}`} className={`${styles.Link}`}>
+        <img
+          src={`http://localhost:5000/${user.avatar}`}
+          alt=""
+          className={`${styles.Img}`}
+        />
+        <div className={`${styles.Info}`}>
+          <p
+            className={`${styles.Name}`}
+          >{`${user.name} ${user.secondName}`}</p>
+        </div>
+      </Link>{" "}
+    </div>
+  ) : null;
 };
 export default ConversationItem;

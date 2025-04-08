@@ -16,6 +16,7 @@ import UsersPage from "./pages/UsersPage";
 import FriendsPage from "./pages/FriendsPage";
 import ConversationsPage from "./pages/ConversationsPage";
 import MessangerPage from "./pages/MessangerPage";
+import EditPage from "./pages/EditPage";
 function App() {
   const dispatch = useAppDispatch();
   const isauth = useAppSelector((store) => store.userReducer.isAuthorization);
@@ -38,6 +39,10 @@ function App() {
         <Route
           path="/createPost"
           element={<OnlyAuth component={<CreatePostPage />} />}
+        />
+         <Route
+          path="/edit"
+          element={<OnlyAuth component={<EditPage/>} />}
         />
         <Route path="/users" element={<OnlyAuth component={<UsersPage />} />} />
         <Route
